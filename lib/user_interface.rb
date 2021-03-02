@@ -16,6 +16,12 @@ class UserInterface
     end
   end
 
+  def display_github_info(hash)
+    output.print "#{hash[:name]} is GitHub user ##{hash[:id]}
+Avatar: #{hash[:avatar_url]}
+Link to profile: #{hash[:html_url]}"
+  end
+
   private
 
   attr_reader :input, :output
