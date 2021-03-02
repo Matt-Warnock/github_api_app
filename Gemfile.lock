@@ -97,7 +97,7 @@ DEPENDENCIES
   rake (~> 12.3, >= 12.3)
   rest-client (~> 2.1)
   rspec (~> 3.9)
-  rubocop (~> 0.85)
+  rubocop (~> 0.93)
   webmock (~> 3.11)
 
 RUBY VERSION
