@@ -4,7 +4,6 @@ source 'https://rubygems.org'
 ruby '3.0.0'
 
 gem 'rest-client', '~> 2.1'
-gem 'webmock', '~> 3.11'
 
 group :test do
   gem 'coveralls', '~> 0.8', require: false
@@ -12,4 +11,5 @@ group :test do
   gem 'rake', '~> 12.3', '>= 12.3'
   gem 'rspec', '~> 3.9'
   gem 'rubocop', '~> 0.93', require: false
+  gem 'webmock', '~> 3.11'
 end
