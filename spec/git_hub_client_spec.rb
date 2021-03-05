@@ -33,9 +33,16 @@ RSpec.describe GitHubClient do
       expect(result).to eq(false)
     end
 
-    it 'does not raise an error when request has failed' do
+    it 'does not raise an error when request timesout' do
       stub_request(:get, 'http://api.github.com/users/irelevent')
-        .to_return(status: 404)
+        .to_timeout
+
+      expect { client.collect_user_details('irelevent') }.not_to raise_error
+    end
+
+    it 'does not raise an error when responce fails' do
+      stub_request(:get, 'http://api.github.com/users/irelevent')
+        .to_raise(RestClient::ExceptionWithResponse)
 
       expect { client.collect_user_details('irelevent') }.not_to raise_error
     end
