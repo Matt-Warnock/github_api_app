@@ -1,23 +1,23 @@
 # frozen_string_literal: true
 
 require 'rest-client'
+require 'json'
 
 class GitHubClient
   def collect_user_details(username)
     uri = URI.parse("api.github.com/users/#{username}")
+    responce = RestClient.get(uri.path)
 
-    RestClient.get(uri.path) do |responce|
-      return json_to_hash(responce.body) if responce.code == 200
-
-      false
-    end
+    json_to_hash(responce)
+  rescue RestClient::ExceptionWithResponse, JSON::ParserError
+    false
   end
 
   private
 
   def json_to_hash(responce)
-    JSON.parse(responce, { symbolize_names: true })
-  rescue JSON::ParserError
+    return JSON.parse(responce, { symbolize_names: true }) if responce.code == 200
+
     false
   end
 end

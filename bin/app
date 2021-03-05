@@ -2,3 +2,10 @@
 # frozen_string_literal: true
 
 $LOAD_PATH.unshift File.join(File.dirname(__FILE__), '..', 'lib')
+
+require 'git_hub_client'
+require 'user_info_retriever'
+require 'user_interface'
+
+user_interface = UserInterface.new($stdin, $stdout)
+UserInfoRetriever.new(user_interface, GitHubClient.new).run

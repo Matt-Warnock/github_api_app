@@ -26,10 +26,10 @@ RSpec.describe UserInterface do
 
       ui.ask_for_valid_username
 
-      expect(output.string).to include('Invalid Git-Hub username')
+      expect(output.string).to include('Invalid input')
     end
 
-    it 'keeps asking user for input untill a valid username is given' do
+    it 'keeps asking user for input until a valid username is given' do
       input = StringIO.new("matt--warnock\nmatt-warnock\n")
       ui = described_class.new(input, output)
 
@@ -42,7 +42,7 @@ RSpec.describe UserInterface do
   describe 'display_github_info' do
     it 'prints users github information' do
       github_data_hash = {
-        name: 'Matt Warnock',
+        login: 'Matt Warnock',
         id: 1,
         avatar_url: 'https://avatars.githubusercontent.com/u/irelivent',
         html_url: 'https://github.com/Matt-Warnock'
@@ -53,6 +53,69 @@ RSpec.describe UserInterface do
       expect(output.string).to include('Matt Warnock is GitHub user #1
 Avatar: https://avatars.githubusercontent.com/u/irelivent
 Link to profile: https://github.com/Matt-Warnock')
+    end
+  end
+
+  describe '#error_message' do
+    it 'prints error message' do
+      ui.error_message
+
+      expect(output.string).to include('No such user!')
+    end
+  end
+  describe '#another_username?' do
+    it 'asks user if they want to enter another github username' do
+      input = StringIO.new("y\n")
+      ui = described_class.new(input, output)
+
+      ui.another_username?
+
+      expect(output.string).to include('Would you like to enter another username[y/n]?: ')
+    end
+
+    it 'prints error message if answer is invaild' do
+      input = StringIO.new("good show!\nn\n")
+      ui = described_class.new(input, output)
+
+      ui.another_username?
+
+      expect(output.string).to include('Invalid input')
+    end
+
+    it 'keeps asking user for input until a valid answer is given' do
+      input = StringIO.new("whhaa\ny\n")
+      ui = described_class.new(input, output)
+
+      ui.another_username?
+
+      expect(output.string.scan('another username[y/n]?').length).to eq(2)
+    end
+
+    it 'returns true if answer is y' do
+      input = StringIO.new("y\n")
+      ui = described_class.new(input, output)
+
+      result = ui.another_username?
+
+      expect(result).to be(true)
+    end
+
+    it 'case insensitive, returns true if answer is Y' do
+      input = StringIO.new("Y\n")
+      ui = described_class.new(input, output)
+
+      result = ui.another_username?
+
+      expect(result).to be(true)
+    end
+
+    it 'returns false if answer is n' do
+      input = StringIO.new("n\n")
+      ui = described_class.new(input, output)
+
+      result = ui.another_username?
+
+      expect(result).to be(false)
     end
   end
 end
