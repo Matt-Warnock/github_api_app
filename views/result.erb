@@ -1,0 +1,9 @@
+<div>
+  <% if @error_message %>
+  <p><%= @error_message %></p>
+  <% else %>
+  <img src="<%= @results[:avatar_url] %>" alt="avatar img">
+  <p><%= "#{@results[:login]} is GitHub user #{@results[:id]}"%></p>
+  <a href="<%= @results[:html_url] %>">Link to profile</a>
+  <% end %>
+</div>

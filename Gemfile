@@ -4,6 +4,8 @@ source 'https://rubygems.org'
 ruby '3.0.0'
 
 gem 'rest-client', '~> 2.1'
+gem 'sinatra', '~> 2.1'
+gem 'thin', '~> 1.8'
 
 group :test do
   gem 'coveralls', '~> 0.8', require: false
