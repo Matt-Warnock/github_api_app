@@ -1,4 +1,5 @@
 <form action="search" method="post">
-  <input type="text" name="username" placeholder="<%= @prompt %>" pattern="^[\w](?:[\w]|-(?=[\w])){0,38}$" title="only valid github usernames are execpted" required>
-  <button type="submit" name="button">Search</button>
+  <label for="username" class="typed"><%= @page.username_prompt %><span class="ani-long cursor">&nbsp;</span></label>
+  <input type="text" name="username" id="username" pattern="^\w(?:\w|-(?=\w)){0,38}$" required autofocus>
+  <button type="submit" name="button" class="metal_color">Search</button>
 </form>

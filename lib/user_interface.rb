@@ -10,6 +10,12 @@ class UserInterface
     prompt_valid_input('Please enter a github username: ', /^[\w](?:[\w]|-(?=[\w])){0,38}$/i)
   end
 
+  def handle_result(responce)
+    return display_github_info(responce) if responce
+
+    error_message
+  end
+
   def display_github_info(hash)
     output.print "\n#{hash[:login]} is GitHub user ##{hash[:id]}
 Avatar: #{hash[:avatar_url]}

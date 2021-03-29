@@ -4,22 +4,33 @@ require 'sinatra'
 
 require_relative 'lib/git_hub_client'
 require_relative 'lib/user_info_retriever'
-require_relative 'lib/sinatra_interface'
+require_relative 'lib/sinatra_presenter'
 
-get '/' do
-  @prompt = 'enter a github username'
-  erb :index
-end
+class SinatraControler < Sinatra::Base
+  get '/' do
+    @page = SinatraPresenter.new
 
-post '/search' do
-  input = params['username']
-  output = {}
+    erb :index
+  end
 
-  sinatra_interface = SinatraInterface.new(input, output)
-  UserInfoRetriever.new(sinatra_interface, GitHubClient.new).run
+  post '/search' do
+    @page = SinatraPresenter.new(params['username'])
+    @page.ask_for_valid_username
 
-  @results = output[:github_data]
-  @error_message = output[:error_message]
+    pass unless @page.error
 
-  erb :result
+    redirect '/'
+  end
+
+  post '/search' do
+    @page = SinatraPresenter.new(params['username'])
+
+    UserInfoRetriever.new(@page, GitHubClient.new).run
+
+    if @page.error
+      erb :error
+    else
+      erb :result
+    end
+  end
 end

@@ -1,0 +1,157 @@
+html {
+  font-size: 18px;
+}
+
+body {
+  background-image: url('../images/reflective-brushed-metal-foil-texture-free.jpg');
+  background-size: cover;
+
+  font-family: sans-serif;
+}
+
+.metal_color {
+  color: #7B7B7F;
+  text-shadow: 1px 1px 1px rgba(195,195,195,0.7), -1px -1px 1px rgba(0,0,0,0.7);
+}
+
+.title {
+  margin: 4rem 0;
+  text-align: center;
+  font-size: 4rem;
+  font-weight: bold;
+}
+
+.outer-box {
+  background-color: #7B7B7F;
+  width: 45%;
+  margin: 0 auto;
+  padding: .7% 0;
+  border-radius: 3%;
+
+  -webkit-box-shadow: inset 0px 4px 7px 5px rgba(0,0,0,0.5);
+  box-shadow: inset 0px 4px 7px 5px rgba(0,0,0,0.5);
+}
+
+.container {
+  position: relative;
+  background-color: black;
+  width: 88%;
+  min-height: 550px;
+  margin: 0 auto;
+  border-radius: 50% / 11.3%;
+
+  -webkit-box-shadow: 0px 50px 32px -30px rgba(0,0,0,0.3);
+  box-shadow: 0px 50px 32px -30px rgba(0,0,0,0.3);
+}
+
+.container:before {
+ content: "";
+ position: absolute;
+ top: 10%;
+ bottom: 10%;
+ right: -5%;
+ left: -5%;
+
+ background: inherit;
+ border-radius: 5.3% / 50%;
+
+ -webkit-box-shadow: 39px 0px 32px -30px rgba(0,0,0,0.3);
+ box-shadow: 39px 0px 32px -30px rgba(0,0,0,0.3);
+}
+
+form {
+  position: relative;
+  width: 95%;
+  margin: 0 auto;
+  padding: 12% 8%;
+
+}
+
+label .valid-message {
+  font-size: .8rem;
+}
+
+.typed {
+  position: relative;
+  margin: 0;
+
+  font-family: monospace;
+  text-decoration: none;
+  color: #54AE01;
+}
+
+.cursor {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0;
+  background-color: black;
+}
+
+
+.ani-long {
+  animation: typing 4.7s steps(68, end);
+}
+
+.ani-result {
+  animation: typing 3.5s steps(36, end);
+}
+
+@keyframes typing {
+  from { width: 100% }
+  to { width: 0% }
+}
+
+input {
+  background-color: black;
+  outline: none;
+  border: none;
+  -webkit-appearance: none;
+
+  margin-top: .3rem;
+  font-size: 1rem;
+  font-family: monospace;
+  color: #54AE01;
+}
+
+button {
+  position: fixed;
+  left: 45%;
+  bottom: 10%;
+
+  background-image: url('../images/reflective-brushed-metal-foil-texture-free.jpg');
+
+  border: 1px solid black;
+  border-radius: 8%;
+  padding: 1.2rem 2.4rem;
+  font-size: 1rem;
+
+  -webkit-box-shadow: 1px 3px 9px -1px rgba(0,0,0,0.7);
+  box-shadow: 1px 3px 9px -1px rgba(0,0,0,0.7);
+}
+
+button:active {
+  -webkit-box-shadow: inset 2px 3px 9px -1px rgba(0,0,0,0.7);
+  box-shadow: inset 2px 3px 9px -1px rgba(0,0,0,0.7);
+}
+
+.results {
+  position: relative;
+  padding: 10%;
+}
+
+a {
+  display: inline-block;
+  margin: 10px 0;
+  color: #54AE01;
+}
+
+.profile_pic {
+  width: 30%;
+  margin-bottom: 5px;
+}
+
+.profile_pic img {
+  max-width: 100%;
+  height: auto;
+}
