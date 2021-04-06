@@ -1,0 +1,8 @@
+<div class="results">
+  <div class="profile_pic">
+    <img src="<%= @page.github_user[:avatar_url] %>" alt="avatar img">
+  </div>
+  <a href="<%= @page.github_user[:html_url] %>">Link to profile</a>
+  <p class="typed"><%= "#{@page.github_user[:login]} is GitHub user #{@page.github_user[:id]}"%><span class="ani-result cursor">&nbsp;</span></p>
+  <a href="/"><button type="button" class="metal_color">Search again</button></a>
+</div>

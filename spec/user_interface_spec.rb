@@ -39,15 +39,24 @@ RSpec.describe UserInterface do
     end
   end
 
-  describe 'display_github_info' do
-    it 'prints users github information' do
-      github_data_hash = {
-        login: 'Matt Warnock',
-        id: 1,
-        avatar_url: 'https://avatars.githubusercontent.com/u/irelivent',
-        html_url: 'https://github.com/Matt-Warnock'
-      }
+  describe '#handle_result' do
+    it 'displays the github info if a truthy objected is passed' do
+      ui.handle_result(github_data_hash)
 
+      expect(output.string).to include('Matt Warnock is GitHub user #1
+Avatar: https://avatars.githubusercontent.com/u/irelivent
+Link to profile: https://github.com/Matt-Warnock')
+    end
+
+    it 'displays error message if a falsy object is passed' do
+      ui.handle_result(false)
+
+      expect(output.string).to include('No such user!')
+    end
+  end
+
+  describe '#display_github_info' do
+    it 'prints users github information' do
       ui.display_github_info(github_data_hash)
 
       expect(output.string).to include('Matt Warnock is GitHub user #1
@@ -117,5 +126,14 @@ Link to profile: https://github.com/Matt-Warnock')
 
       expect(result).to be(false)
     end
+  end
+
+  def github_data_hash
+    {
+      login: 'Matt Warnock',
+      id: 1,
+      avatar_url: 'https://avatars.githubusercontent.com/u/irelivent',
+      html_url: 'https://github.com/Matt-Warnock'
+    }
   end
 end
