@@ -8,7 +8,7 @@ gem 'sinatra', '~> 2.1'
 gem 'thin', '~> 1.8'
 
 group :test do
-  gem 'coveralls', '~> 0.8', require: false
+  gem 'coveralls_reborn', '~> 0.21.0', require: false
   gem 'pry', '~> 0.12'
   gem 'rack-test', '~> 1.1'
   gem 'rake', '~> 12.3', '>= 12.3'
