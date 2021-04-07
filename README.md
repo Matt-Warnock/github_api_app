@@ -3,11 +3,14 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/e4be40bb352cd1c3cbc1/maintainability)](https://codeclimate.com/github/Matt-Warnock/github_api_app/maintainability)
 [![Dependency status](https://badges.depfu.com/badges/a5f9aa0eb83998a1a81f7b1298a0b4f8/overview.svg)](https://depfu.com/github/Matt-Warnock/github_api_app?project=Bundler)
 
-
 # Readme
 
 An app that retrieves information about a specified GitHub user.
 
+## System Diagram
+![Diagram of system](diagram.png)
+
+You can keep the diagram up to date uploading `diagram.xml` to: https://app.diagrams.net/. Then save both `.xml` and `.png` updated diagrams to root project directory.
 
 ## Badges
 
