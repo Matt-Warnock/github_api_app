@@ -13,6 +13,6 @@ group :test do
   gem 'rack-test', '~> 1.1'
   gem 'rake', '~> 12.3', '>= 12.3'
   gem 'rspec', '~> 3.9'
-  gem 'rubocop', '~> 0.93', require: false
+  gem 'rubocop', '~> 1.15', require: false
   gem 'webmock', '~> 3.11'
 end
