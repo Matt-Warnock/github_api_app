@@ -7,6 +7,8 @@ require_relative 'lib/user_info_retriever'
 require_relative 'lib/sinatra_presenter'
 
 class SinatraControler < Sinatra::Base
+  set :port, ENV['PORT'] || 4567
+
   get '/' do
     @page = SinatraPresenter.new
 
